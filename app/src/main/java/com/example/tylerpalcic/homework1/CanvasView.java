@@ -9,45 +9,46 @@ import android.view.View;
 import android.graphics.Path;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+
 
 public class CanvasView  extends View{
 
-    public int width;
     public int height;
-    private Bitmap mBitmap;
+    public Bitmap mBitmap;
     public Canvas mCanvas;
     private Path mPath;
     private Paint mPaint;
     private float mX, mY;
     private static final float TOLERANCE = 5;
     Context context;
+    private ArrayList<Path> paths = new ArrayList<Path>();
 
     public Canvas getmCanvas() {
-        return mCanvas;
+        return this.mCanvas;
     }
 
 
     public Path getmPath() {
-        return mPath;
+        return this.mPath;
     }
 
 
 
     public Paint getmPaint() {
-        return mPaint;
+        return this.mPaint;
     }
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-
         mPath = new Path();
-
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeWidth(4f);
+        paths.add(mPath);
 
     }
 
@@ -64,6 +65,7 @@ public class CanvasView  extends View{
         super.onDraw(canvas);
 
         canvas.drawPath(mPath, mPaint);
+
     }
 
     private void startTouch(float x, float y){
@@ -90,6 +92,7 @@ public class CanvasView  extends View{
 
     private void upTouch(){
         mPath.lineTo(mX, mY);
+
     }
 
     @Override
