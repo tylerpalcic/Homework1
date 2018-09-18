@@ -42,6 +42,8 @@ The basic design of this application is two separate fragment classes where the 
 
 I chose to design the application in this fashion for a couple of reasons. The first being that I knew that the project was going to need two different tabs in order to switch back and forth from one UI to the other. So I created two new java classes and xml files for each tab fragment. The drawing canvas would then need to be built in a separate class and referenced within the class of the tab using it. I needed a pager adapter in order to switch between each tab so one was built in another class as well. The main class of course is where all the additional built classes are implemented.
 
+The Part1 file is a java class for the first tab. This is where the functionality of the widgets on that tab are implemented. The Part2 file is another java class for the second tab. This is where the color picker is implemented along with the saving feature. There is also a method for requesting permission to save the drawing image to the device. The CanvasView file is also a java class where the drawing canvas is built. It contains various methods to draw the path on the canvas, clear the canvas, and to construct the multiple paths needed in order to change the paint color in between strokes.
+
 ## Author
 * Tyler Palcic
 
